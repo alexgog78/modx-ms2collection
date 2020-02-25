@@ -4,7 +4,6 @@ Ext.namespace('ms2Collection.extend');
 
 Ext.ComponentMgr.onAvailable('minishop2-product-tabs', function () {
     this.on('beforerender', function () {
-        console.log(ms2Collection.config.recordCollectionParentId);
         if (ms2Collection.config.recordCollectionParentId) {
             return;
         }
