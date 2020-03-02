@@ -1,6 +1,6 @@
 <?php
 
-class ms2CollectionMgrProductLayoutHandler extends abstractMgrHandler
+class ms2CollectionMgrProductLayoutHandler extends AbstractMgrHandler
 {
     /** @var miniShop2 */
     private $miniShop2;
@@ -39,7 +39,7 @@ class ms2CollectionMgrProductLayoutHandler extends abstractMgrHandler
         $controller->addJavascript($this->miniShop2->config['jsUrl'] . 'mgr/misc/default.grid.js');
         $controller->addJavascript($this->miniShop2->config['jsUrl'] . 'mgr/category/product.grid.js');
         $controller->addJavascript($this->config['jsUrl'] . 'mgr/widgets/product/grid.js');
-        $controller->addLastJavascript($this->config['ms2JsUrl'] . 'mgr/extend/product.panel.js');
+        $controller->addLastJavascript($this->config['jsUrl'] . 'mgr/ms2/product.panel.js');
     }
 
     /**

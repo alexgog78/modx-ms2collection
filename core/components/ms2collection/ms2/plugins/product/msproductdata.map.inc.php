@@ -2,10 +2,10 @@
 
 return [
     'fields' => [
-        'collection_parent_id' => 0,
+        'ms2collection_parent_id' => 0,
     ],
     'fieldMeta' => [
-        'collection_parent_id' => [
+        'ms2collection_parent_id' => [
             'dbtype' => 'int',
             'precision' => '10',
             'attributes' => 'unsigned',
@@ -15,13 +15,13 @@ return [
         ],
     ],
     'indexes' => [
-        'collection_parent_id' => [
-            'alias' => 'collection_parent_id',
+        'ms2collection_parent_id' => [
+            'alias' => 'ms2collection_parent_id',
             'primary' => false,
             'unique' => false,
             'type' => 'BTREE',
             'columns' => [
-                'collection_parent_id' => [
+                'ms2collection_parent_id' => [
                     'length' => '',
                     'collation' => 'A',
                     'null' => false,
@@ -33,7 +33,7 @@ return [
         'ms2Collection' => [
             'class' => 'msProductData',
             'local' => 'id',
-            'foreign' => 'collection_parent_id',
+            'foreign' => 'ms2collection_parent_id',
             'cardinality' => 'many',
             'owner' => 'local',
         ],
@@ -41,7 +41,7 @@ return [
     'aggregates' => [
         'ms2CollectionParent' => [
             'class' => 'msProduct',
-            'local' => 'collection_parent_id',
+            'local' => 'ms2collection_parent_id',
             'foreign' => 'id',
             'cardinality' => 'one',
             'owner' => 'foreign',

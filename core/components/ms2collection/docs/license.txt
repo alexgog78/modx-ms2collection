@@ -1,0 +1,5 @@
+--------------------
+ms2Collection
+--------------------
+Author: GrimWeb <a.goguev@alexgog.ru>
+--------------------

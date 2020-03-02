@@ -1,6 +1,6 @@
 <?php
 
-class ms2CollectionMgrTrashHandler extends abstractMgrHandler
+class ms2CollectionMgrTrashHandler extends AbstractMgrHandler
 {
     /**
      * @param $parentId

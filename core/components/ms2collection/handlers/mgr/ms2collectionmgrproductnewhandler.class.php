@@ -1,6 +1,6 @@
 <?php
 
-class ms2CollectionMgrProductNewHandler extends abstractMgrHandler
+class ms2CollectionMgrProductNewHandler extends AbstractMgrHandler
 {
     /** @var modManagerController */
     private $controller;
@@ -52,7 +52,10 @@ class ms2CollectionMgrProductNewHandler extends abstractMgrHandler
     private function setMsProductData()
     {
         $this->controller->resourceArray['collection_parent_id'] = $this->parentId;
-        $parentData = $this->parent->getOne('Data')->toArray();
+        if (!$parentData = $this->parent->getOne('Data')) {
+            return;
+        }
+        $parentData = $parentData->toArray();
         unset($parentData['id'], $parentData['image'], $parentData['thumb']);
         foreach ($parentData as $key => $value) {
             if (is_array($value)) {
