@@ -9,7 +9,7 @@ ms2Collection.grid.product = function (config) {
         url: ms2Collection.config.connectorUrl,
         baseParams: {
             action: 'mgr/product/getlist',
-            collection_parent_id: config.collection_parent_id,
+            ms2collection_parent_id: config.ms2collection_parent_id,
         },
         save_action: 'mgr/product/updatefromgrid',
     });
@@ -25,7 +25,7 @@ Ext.extend(ms2Collection.grid.product, miniShop2.grid.Products, {
     },
 
     createProduct: function () {
-        MODx.loadPage('resource/create', 'class_key=msProduct&parent=' + this.config.parent_id + '&collection_parent_id=' + this.config.collection_parent_id + '&context_key=' + MODx.ctx);
+        MODx.loadPage('resource/create', 'class_key=msProduct&parent=' + this.config.parent_id + '&ms2collection_parent_id=' + this.config.ms2collection_parent_id + '&context_key=' + MODx.ctx);
     }
 });
 Ext.reg('ms2collection-grid-product', ms2Collection.grid.product);

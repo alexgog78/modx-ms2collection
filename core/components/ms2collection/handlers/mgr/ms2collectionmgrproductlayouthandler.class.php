@@ -30,7 +30,7 @@ class ms2CollectionMgrProductLayoutHandler extends AbstractMgrHandler
         $this->loadMs2Assets($controller);
         $this->config = array_merge($this->config, [
             'recordId' => $controller->resource->id ?? null,
-            'recordCollectionParentId' => $controller->scriptProperties['collection_parent_id'] ?? $controller->resource->get('collection_parent_id'),
+            'recordCollectionParentId' => $controller->scriptProperties['ms2collection_parent_id'] ?? $controller->resource->get('ms2collection_parent_id'),
             'recordParentId' => $controller->resource->parent,
         ]);
         parent::loadAssets($controller);

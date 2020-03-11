@@ -14,7 +14,7 @@ class ms2CollectionMgrProductNewHandler extends AbstractMgrHandler
     public function renderResourceForm()
     {
         $this->controller = $this->modx->controller;
-        $this->parentId = $this->controller->scriptProperties['collection_parent_id'];
+        $this->parentId = $this->controller->scriptProperties['ms2collection_parent_id'];
         if (!$this->parentId) {
             return;
         }
@@ -51,12 +51,12 @@ class ms2CollectionMgrProductNewHandler extends AbstractMgrHandler
 
     private function setMsProductData()
     {
-        $this->controller->resourceArray['collection_parent_id'] = $this->parentId;
+        $this->controller->resourceArray['ms2collection_parent_id'] = $this->parentId;
         if (!$parentData = $this->parent->getOne('Data')) {
             return;
         }
         $parentData = $parentData->toArray();
-        unset($parentData['id'], $parentData['image'], $parentData['thumb']);
+        unset($parentData['id'], $parentData['image'], $parentData['thumb'], $parentData['ms2collection_parent_id']);
         foreach ($parentData as $key => $value) {
             if (is_array($value)) {
                 foreach ($value as $subValue) {

@@ -28,7 +28,7 @@ Ext.extend(ms2Collection.extend.product, Ext.Component, {
     initComponent: function () {
         var html = {
             xtype: 'ms2collection-grid-product',
-            collection_parent_id: this.recordId,
+            ms2collection_parent_id: this.recordId,
             parent_id: this.parentId,
             cls: 'main-wrapper'
         };

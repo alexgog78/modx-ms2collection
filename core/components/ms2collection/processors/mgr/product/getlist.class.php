@@ -9,10 +9,10 @@ class ms2collectionProductGetListProcessor extends msProductGetListProcessor
     public function prepareQueryBeforeCount(xPDOQuery $c)
     {
         $c = parent::prepareQueryBeforeCount($c);
-        $collectionParentId = $this->getProperty('collection_parent_id');
+        $collectionParentId = $this->getProperty('ms2collection_parent_id');
         if (isset($collectionParentId)) {
             $c->where([
-                'AND:Data.collection_parent_id:=' => $collectionParentId,
+                'AND:Data.ms2collection_parent_id:=' => $collectionParentId,
             ]);
         }
         return $c;
