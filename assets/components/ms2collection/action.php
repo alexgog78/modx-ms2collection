@@ -1,5 +1,8 @@
 <?php
 
+//TODO remove file
+
+
 if (empty($_REQUEST['ms2collection_id'])) {
     exit(json_encode(array('success' => false, 'message' => 'Access denied')));
 }
