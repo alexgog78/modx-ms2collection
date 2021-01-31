@@ -1,8 +1,6 @@
 <?php
 
-if (!$this->loadClass('getlist', MODX_CORE_PATH . 'components/minishop2/processors/mgr/product/', true, true)) {
-    return false;
-}
+$this->loadClass('getlist', MODX_CORE_PATH . 'components/minishop2/processors/mgr/product/', true, true);
 
 class ms2collectionProductGetListProcessor extends msProductGetListProcessor
 {

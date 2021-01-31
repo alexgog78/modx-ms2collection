@@ -1,6 +1,8 @@
 'use strict';
 
-Ext.namespace('ms2Collection.extend');
+console.log(111);
+
+/*Ext.namespace('ms2Collection.extend');
 
 Ext.ComponentMgr.onAvailable('minishop2-product-tabs', function () {
     this.on('beforerender', function () {
@@ -48,4 +50,4 @@ Ext.extend(ms2Collection.extend.product, Ext.Component, {
             items: this.html
         });
     }
-});
+});*/

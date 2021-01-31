@@ -6,4 +6,4 @@ var ms2Collection = function (config) {
 };
 Ext.extend(ms2Collection, Ext.Component, abstractModule);
 Ext.reg('ms2collection', ms2Collection);
-var ms2Collection = new ms2Collection();
+ms2Collection = new ms2Collection();
