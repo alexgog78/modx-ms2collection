@@ -34,7 +34,7 @@ class ms2CollectionEventOnDocFormRender extends abstractModuleEvent
         if ($this->mode != modSystemEvent::MODE_NEW || $this->resource->get('class_key') != 'msProduct' || !$this->collectionParentId) {
             return;
         }
-        //$this->controller->resourceArray['show_in_tree'] = 0;
+        $this->resource->set('ms2collection_parent_id', $this->collectionParentId);
         $this->controller->resourceArray['ms2collection_parent_id'] = $this->collectionParentId;
 
         /** @var msProduct $parent */
