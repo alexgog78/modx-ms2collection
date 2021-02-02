@@ -8,12 +8,13 @@ class ms2CollectionEventOnResourceDelete extends abstractModuleEvent
     /**
      * ms2CollectionEventOnResourceDelete constructor.
      *
-     * @param abstractModule $service
+     * @param ms2Collection $service
+     * @param string $eventName
      * @param array $scriptProperties
      */
-    public function __construct(abstractModule $service, $scriptProperties = [])
+    public function __construct(ms2Collection $service, string $eventName, $scriptProperties = [])
     {
-        parent::__construct($service, $scriptProperties);
+        parent::__construct($service, $eventName, $scriptProperties);
         $this->resource = $scriptProperties['resource'];
     }
 
