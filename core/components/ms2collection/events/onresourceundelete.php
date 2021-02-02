@@ -2,7 +2,7 @@
 
 class ms2CollectionEventOnResourceUndelete extends abstractModuleEvent
 {
-    /** @var modResource string */
+    /** @var modResource */
     private $resource;
 
     /**

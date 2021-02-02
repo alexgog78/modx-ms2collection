@@ -4,6 +4,7 @@ define('PKG_NAME', 'ms2Collection');
 define('PKG_NAME_LOWER', strtolower(PKG_NAME));
 
 define('PKG_PATH', MODX_CORE_PATH . 'components/' . PKG_NAME_LOWER . '/');
+define('PKG_MODEL_PATH', PKG_PATH . 'model/');
 define('PKG_ELEMENTS_PATH', PKG_PATH . 'elements/');
 
 define('PKG_BUILD_PATH', __DIR__ . '/');

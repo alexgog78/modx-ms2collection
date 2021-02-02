@@ -1,53 +1,56 @@
 'use strict';
 
-console.log(111);
-
-/*Ext.namespace('ms2Collection.extend');
+Ext.namespace('ms2Collection.extend.panel');
 
 Ext.ComponentMgr.onAvailable('minishop2-product-tabs', function () {
     this.on('beforerender', function () {
-        if (ms2Collection.config.recordCollectionParentId) {
-            return;
-        }
-        new ms2Collection.extend.product({
-            panel: this,
-            recordId: ms2Collection.config.recordId,
-            parentId: ms2Collection.config.recordParentId,
+        let panel = Ext.getCmp('modx-panel-resource');
+        let productFields = panel.getAllProductFields(panel);
+        let field = miniShop2.utils.getExtField(panel, 'ms2collection_parent_id', productFields['ms2collection_parent_id'])
+        miniShop2.config.extra_fields.push('ms2collection_parent_id');
+        Ext.getCmp('minishop2-product-data').add(field);
+
+        this.add({
+            title: _('ms2collection_collection'),
+            xtype: 'ms2collection-extend-panel-product',
+            record_id: ms2Collection.config.record_id,
+            parent_id: ms2Collection.config.parent_id,
         });
     });
 });
 
-ms2Collection.extend.product = function (config) {
+ms2Collection.extend.panel.product = function (config) {
     config = config || {};
-    ms2Collection.extend.product.superclass.constructor.call(this, config);
+    if (!config.id) {
+        config.id = 'ms2collection-extend-panel-product';
+    }
+    Ext.applyIf(config, {
+        items: [
+            ms2Collection.component.panelDescription(_('ms2collection_collection_desc')),
+            MODx.PanelSpacer,
+            this.getGrid(config),
+        ],
+    });
+    ms2Collection.extend.panel.product.superclass.constructor.call(this, config);
 };
-Ext.extend(ms2Collection.extend.product, Ext.Component, {
-    panel: {},
-    recordId: 0,
-    parentId: 0,
-    html: {},
+Ext.extend(ms2Collection.extend.panel.product, MODx.Panel, {
+    record_id: 0,
+    parent_id: 0,
 
     initComponent: function () {
-        var html = {
-            xtype: 'ms2collection-grid-product',
-            ms2collection_parent_id: this.recordId,
-            parent_id: this.parentId,
-            cls: 'main-wrapper'
-        };
-        if (!this.recordId) {
-            html = {xtype: 'ms2collection-notice-undefined'};
-        }
-        this.html = ms2Collection.function.getPanelMainPart([
-            ms2Collection.function.getPanelDescription(_('ms2collection.tab.collection.management')),
-            html
-        ]);
-        this.updatePanel();
+        ms2Collection.extend.panel.product.superclass.initComponent.call(this);
     },
 
-    updatePanel: function () {
-        this.panel.add({
-            title: _('ms2collection.tab.collection'),
-            items: this.html
-        });
+    getGrid: function (config) {
+        if (!config.record_id) {
+            return ms2Collection.component.notice(_('ms2collection_undefined'));
+        }
+        return {
+            xtype: 'ms2collection-grid-product',
+            ms2collection_parent_id: config.record_id,
+            parent_id: config.parent_id,
+            cls: 'main-wrapper'
+        };
     }
-});*/
+});
+Ext.reg('ms2collection-extend-panel-product', ms2Collection.extend.panel.product);
