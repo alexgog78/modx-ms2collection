@@ -7,6 +7,7 @@ return [
         'events' => [
             'msOnManagerCustomCssJs',
             'OnDocFormRender',
+            'OnBeforeDocFormSave',
             'OnResourceDelete',
             'OnResourceUndelete',
         ],

@@ -26,15 +26,22 @@ class ms2CollectionEventmsOnManagerCustomCssJs extends abstractModuleEvent
         $this->miniShop2 = $this->modx->getService('miniShop2');
     }
 
-    public function run()
+    /**
+     * @return bool
+     */
+    protected function checkPermissions()
     {
         if (!in_array($this->page, [
-                'product_create',
-                'product_update',
-            ]) || $this->controller->resource->get('ms2collection_parent_id')) {
-            return;
+            'product_create',
+            'product_update',
+        ])) {
+            return false;
         }
+        return parent::checkPermissions();
+    }
 
+    protected function handleEvent()
+    {
         $this->controller->addLexiconTopic($this->service::PKG_NAMESPACE . ':default');
 
         $this->service->loadMgrAbstractCssJs($this->controller);
@@ -45,6 +52,7 @@ class ms2CollectionEventmsOnManagerCustomCssJs extends abstractModuleEvent
         $configJs = $this->modx->toJSON([
             'record_id' => $this->controller->resource->get('id') ?? 0,
             'parent_id' => $this->controller->resource->get('parent'),
+            'collection_parent_id' => $this->controller->resource->get('ms2collection_parent_id'),
         ]);
         $this->controller->addHtml('<script type="text/javascript">Ext.applyIf(' . get_class($this->service) . '.config, ' . $configJs . ');</script>');
         $this->controller->addLastJavascript($this->service->jsUrl . 'mgr/ms2/panel.product.js');

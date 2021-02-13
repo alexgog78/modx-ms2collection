@@ -10,12 +10,14 @@ Ext.ComponentMgr.onAvailable('minishop2-product-tabs', function () {
         miniShop2.config.extra_fields.push('ms2collection_parent_id');
         Ext.getCmp('minishop2-product-data').add(field);
 
-        this.add({
-            title: _('ms2collection_collection'),
-            xtype: 'ms2collection-extend-panel-product',
-            record_id: ms2Collection.config.record_id,
-            parent_id: ms2Collection.config.parent_id,
-        });
+        if (!ms2Collection.config.collection_parent_id) {
+            this.add({
+                title: _('ms2collection_collection'),
+                xtype: 'ms2collection-extend-panel-product',
+                record_id: ms2Collection.config.record_id,
+                parent_id: ms2Collection.config.parent_id,
+            });
+        }
     });
 });
 

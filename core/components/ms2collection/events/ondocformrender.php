@@ -30,11 +30,19 @@ class ms2CollectionEventOnDocFormRender extends abstractModuleEvent
         $this->collectionParentId = $this->controller->scriptProperties['ms2collection_parent_id'] ?? 0;
     }
 
-    public function run()
+    /**
+     * @return bool
+     */
+    protected function checkPermissions()
     {
         if ($this->mode != modSystemEvent::MODE_NEW || $this->resource->get('class_key') != 'msProduct' || !$this->collectionParentId) {
-            return;
+            return false;
         }
+        return parent::checkPermissions();
+    }
+
+    protected function handleEvent()
+    {
         $this->resource->set('ms2collection_parent_id', $this->collectionParentId);
         $this->controller->resourceArray['ms2collection_parent_id'] = $this->collectionParentId;
 
